@@ -647,23 +647,113 @@
         display: block;
       }
 
-      .data-pequena {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 1.3rem;
-        color: var(--verde-oliva);
-        margin: 15px 0;
-        padding: 8px 15px;
-        background-color: rgba(138, 154, 91, 0.05);
-        border-radius: 8px;
-        display: inline-block;
-        letter-spacing: 0.5px;
-        opacity: 0.9;
+      .calendario-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 0;
       }
 
-      .data-pequena i {
-        margin-right: 8px;
-        color: var(--dourado);
+      .calendario-pequeno {
+        width: 280px;
+        background-color: var(--creme-claro);
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border: 1px solid var(--verde-oliva-claro);
+        margin-bottom: 15px;
+      }
+
+      .cabecalho-calendario {
+        background: linear-gradient(
+          135deg,
+          var(--verde-oliva),
+          var(--verde-oliva-suave)
+        );
+        color: white;
+        padding: 15px;
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .dias-calendario {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        padding: 15px;
+        gap: 8px;
+      }
+
+      .dia-semana {
+        text-align: center;
+        font-weight: 600;
+        color: var(--cinza-medio);
+        padding: 5px;
+        font-size: 0.9rem;
+      }
+
+      .dia-numero {
+        text-align: center;
+        padding: 10px 0;
+        border-radius: 50%;
+        cursor: default;
+        transition: all 0.3s ease;
         font-size: 1.1rem;
+      }
+
+      .dia-numero:hover {
+        background-color: var(--verde-oliva-claro);
+      }
+
+      .dia-casamento {
+        background-color: #ff6b6b;
+        color: white;
+        font-weight: 700;
+        position: relative;
+        animation: pulsarCalendario 2s infinite;
+      }
+
+      .dia-casamento::after {
+        content: "♥";
+        position: absolute;
+        top: -5px;
+        right: 5px;
+        font-size: 0.8rem;
+      }
+
+      .dia-vazio {
+        visibility: hidden;
+      }
+
+      @keyframes pulsarCalendario {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+        }
+      }
+
+      .data-calendario-grande {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        color: var(--verde-oliva);
+        margin-top: 10px;
+        padding: 12px 25px;
+        background-color: rgba(138, 154, 91, 0.08);
+        border-radius: 10px;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
+      .data-calendario-grande i {
+        margin-right: 10px;
+        color: var(--dourado);
+        font-size: 1.2rem;
       }
 
       /* OS NOIVOS - SCROLL 5 */
@@ -782,7 +872,7 @@
         margin: 0 20px;
         font-size: 3.5rem;
         color: var(--dourado);
-        animation: pulsar 3s infinite ease-in-out;
+        animation: pulsar 1.5s infinite ease-in-out;
         opacity: 0;
         transform: scale(0.8);
         transition: opacity 1s ease, transform 1s ease;
@@ -1312,7 +1402,7 @@
         letter-spacing: 1px;
       }
 
-      /* MENSAGENS - SCROLL 10 (COM NOME E RELAÇÃO) */
+      /* MENSAGENS - SCROLL 10 (COM SISTEMA DE ABAS) */
       #mensagens {
         background: linear-gradient(
           135deg,
@@ -1322,11 +1412,66 @@
         position: relative;
       }
 
-      .form-mensagem-elegante {
-        max-width: 700px;
-        margin: 40px auto 0;
+      .abas-mensagens-container {
+        max-width: 800px;
+        margin: 30px auto 0;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+        overflow: hidden;
+        border: 1px solid var(--verde-oliva-claro);
+      }
+
+      .abas-header {
+        display: flex;
+        border-bottom: 1px solid var(--creme);
+        background-color: var(--creme-claro);
+      }
+
+      .aba {
+        flex: 1;
+        padding: 18px 20px;
+        text-align: center;
+        cursor: pointer;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--cinza-medio);
+        transition: all 0.3s ease;
         position: relative;
-        z-index: 1;
+        overflow: hidden;
+      }
+
+      .aba.ativa {
+        color: var(--verde-oliva);
+        background-color: white;
+      }
+
+      .aba.ativa::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--dourado), var(--verde-oliva));
+      }
+
+      .aba:hover:not(.ativa) {
+        background-color: rgba(138, 154, 91, 0.05);
+      }
+
+      .aba-conteudo {
+        padding: 0;
+        display: none;
+      }
+
+      .aba-conteudo.ativa {
+        display: block;
+      }
+
+      .form-mensagem-elegante {
+        padding: 35px 30px 25px;
       }
 
       .form-grid {
@@ -1418,19 +1563,28 @@
         letter-spacing: 1px;
       }
 
+      .ultimas-mensagens-container {
+        padding: 25px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        border-top: 1px solid var(--creme);
+      }
+
       .mensagens-container {
-        max-width: 800px;
-        margin: 40px auto 0;
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 25px 30px;
         display: flex;
         flex-direction: column;
         gap: 25px;
       }
 
       .mensagem-card {
-        background-color: white;
+        background-color: var(--creme-claro);
         border-radius: 12px;
         padding: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         border-left: 4px solid var(--dourado);
         opacity: 0;
         transform: translateY(20px);
@@ -1481,6 +1635,14 @@
         font-size: 1rem;
         color: var(--cinza-medio);
         margin-top: 15px;
+        font-style: italic;
+      }
+
+      .sem-mensagens {
+        text-align: center;
+        padding: 40px 20px;
+        color: var(--cinza-medio);
+        font-size: 1.3rem;
         font-style: italic;
       }
 
@@ -1673,24 +1835,25 @@
         );
         color: white;
         text-align: center;
-        padding: 60px 20px;
+        padding: 30px 10px;
         position: relative;
         overflow: hidden;
+        min-height: 70vh;
       }
 
       .assinatura-elegante {
         font-family: "Parisienne", cursive;
-        font-size: 3rem;
-        margin-bottom: 20px;
+        font-size: 1rem;
+        margin-bottom: 10px;
         position: relative;
         z-index: 1;
       }
 
       .iniciais-elegante {
         font-family: "Great Vibes", cursive;
-        font-size: 4.5rem;
-        letter-spacing: 20px;
-        margin: 25px 0 35px;
+        font-size: 2rem;
+        letter-spacing: 10px;
+        margin: 15px 0 25px;
         color: var(--dourado-claro);
         position: relative;
         z-index: 1;
@@ -1699,14 +1862,14 @@
 
       @media (max-width: 768px) {
         .iniciais-elegante {
-          font-size: 3.5rem;
-          letter-spacing: 15px;
+          font-size: 2.8rem;
+          letter-spacing: 12px;
         }
       }
 
       .logo-rodape-elegante {
-        max-width: 160px;
-        margin: 30px auto;
+        max-width: 140px;
+        margin: 20px auto;
         display: block;
         position: relative;
         z-index: 1;
@@ -1766,6 +1929,51 @@
         z-index: 1;
         line-height: 1.5;
       }
+      /* ANIMAÇÕES ESPECIAIS PARA OS NOIVOS */
+      @keyframes entrarDaEsquerda {
+        0% {
+          opacity: 0;
+          transform: translateX(-80px) scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+
+      @keyframes entrarDaDireita {
+        0% {
+          opacity: 0;
+          transform: translateX(80px) scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+
+      .noivo.visivel {
+        animation: entrarDaEsquerda 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+      }
+
+      .noiva.visivel {
+        animation: entrarDaDireita 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+      }
+
+      .coracao-central.visivel {
+        animation: pulsar 1.5s infinite ease-in-out, aparecer 0.8s ease forwards;
+      }
+
+      @keyframes aparecer {
+        0% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
     </style>
   </head>
   <body>
@@ -1803,7 +2011,7 @@
           <div class="container-foto-musica">
             <div class="moldura-principal">
               <img
-                src="Foto1.jpg"
+                src="foto2.jpg"
                 alt="José e Laura"
                 class="foto-casal-principal"
               />
@@ -1841,26 +2049,7 @@
         </div>
       </section>
 
-      <!-- SAUDAÇÃO - SCROLL 4 -->
-      <section id="saudacao" class="secao">
-        <div class="conteudo-secao">
-          <h2>Com Muito Amor</h2>
-          <p class="texto-saudacao">
-            "Com amor, temos o prazer de convidar para celebrar connosco este
-            momento especial."
-          </p>
-
-          <div class="data-pequena">
-            <i class="fas fa-calendar-alt"></i> 27 de Setembro de 2026
-          </div>
-
-          <span class="texto-saudacao-destaque"
-            >(Convite válido para duas pessoas)</span
-          >
-        </div>
-      </section>
-
-      <!-- OS NOIVOS - SCROLL 5 -->
+      <!-- OS NOIVOS - SCROLL 4 (AGORA APÓS ARISTÓTELES) -->
       <section id="os-noivos" class="secao">
         <div class="conteudo-secao">
           <h2>Os Noivos</h2>
@@ -1897,6 +2086,73 @@
                 Filha de <strong>Pedro Manuel Correia</strong> e
                 <strong>Isabel da Costa Correia</strong>
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAUDAÇÃO - SCROLL 5 (ANTIGO SCROLL 3) -->
+      <section id="saudacao" class="secao">
+        <div class="conteudo-secao">
+          <h2>Com Muito Amor</h2>
+          <p class="texto-saudacao">
+            "Com muito amor, temos o prazer de convidar-te a ti e ao teu
+            acompanhante para celebrar connosco este momento especial."
+          </p>
+
+          <div class="calendario-container">
+            <span class="texto-saudacao-destaque" style="margin-bottom: 20px"
+              >(Convite válido para duas pessoas)</span
+            >
+
+            <div class="calendario-pequeno">
+              <div class="cabecalho-calendario">Setembro 2026</div>
+              <div class="dias-calendario">
+                <div class="dia-semana">Dom</div>
+                <div class="dia-semana">Seg</div>
+                <div class="dia-semana">Ter</div>
+                <div class="dia-semana">Qua</div>
+                <div class="dia-semana">Qui</div>
+                <div class="dia-semana">Sex</div>
+                <div class="dia-semana">Sáb</div>
+
+                <div class="dia-numero dia-vazio"></div>
+                <div class="dia-numero dia-vazio"></div>
+                <div class="dia-numero">1</div>
+                <div class="dia-numero">2</div>
+                <div class="dia-numero">3</div>
+                <div class="dia-numero">4</div>
+                <div class="dia-numero">5</div>
+                <div class="dia-numero">6</div>
+                <div class="dia-numero">7</div>
+                <div class="dia-numero">8</div>
+                <div class="dia-numero">9</div>
+                <div class="dia-numero">10</div>
+                <div class="dia-numero">11</div>
+                <div class="dia-numero">12</div>
+                <div class="dia-numero">13</div>
+                <div class="dia-numero">14</div>
+                <div class="dia-numero">15</div>
+                <div class="dia-numero">16</div>
+                <div class="dia-numero">17</div>
+                <div class="dia-numero">18</div>
+                <div class="dia-numero">19</div>
+                <div class="dia-numero">20</div>
+                <div class="dia-numero">21</div>
+                <div class="dia-numero">22</div>
+                <div class="dia-numero">23</div>
+                <div class="dia-numero">24</div>
+                <div class="dia-numero">25</div>
+                <div class="dia-numero">26</div>
+                <div class="dia-numero dia-casamento">27</div>
+                <div class="dia-numero">28</div>
+                <div class="dia-numero">29</div>
+                <div class="dia-numero">30</div>
+              </div>
+            </div>
+
+            <div class="data-calendario-grande">
+              <i class="fas fa-calendar-alt"></i> 27 de Setembro de 2026
             </div>
           </div>
         </div>
@@ -2062,7 +2318,7 @@
               style="--item-index: 3"
             >
               <img
-                src="Foto1.jpg"
+                src="foto2.jpg"
                 alt="José e Laura"
                 class="galeria-img-elegante"
               />
@@ -2093,7 +2349,7 @@
         </div>
       </section>
 
-      <!-- MENSAGENS - SCROLL 10 (COM NOME E RELAÇÃO) -->
+      <!-- MENSAGENS - SCROLL 10 (COM SISTEMA DE ABAS) -->
       <section id="mensagens" class="secao">
         <div class="conteudo-secao">
           <h2>Mensagens Especiais</h2>
@@ -2107,43 +2363,70 @@
             Deixe uma mensagem especial para os noivos que será exibida aqui.
           </p>
 
-          <div class="form-mensagem-elegante">
-            <div class="form-grid">
-              <div class="input-group">
-                <label for="nomeMensagem">Seu nome:</label>
-                <input
-                  type="text"
-                  id="nomeMensagem"
-                  placeholder="Digite seu nome"
-                />
+          <div class="abas-mensagens-container">
+            <div class="abas-header">
+              <div class="aba ativa" onclick="mudarAba('minhaMensagem')">
+                Minha Mensagem
               </div>
-              <div class="input-group">
-                <label for="relacaoMensagem">Sua relação:</label>
-                <select id="relacaoMensagem">
-                  <option value="">Selecione uma opção</option>
-                  <option value="Família">Família</option>
-                  <option value="Amigo(a)">Amigo(a)</option>
-                  <option value="Colega de trabalho">Colega de trabalho</option>
-                  <option value="Padrinho/Madrinha">Padrinho/Madrinha</option>
-                  <option value="Convidado(a) especial">
-                    Convidado(a) especial
-                  </option>
-                  <option value="Outro">Outro</option>
-                </select>
+              <div class="aba" onclick="mudarAba('outrasMensagens')">
+                Outras Mensagens
               </div>
             </div>
 
-            <textarea
-              id="textoMensagem"
-              placeholder="Escreva sua mensagem aqui..."
-            ></textarea>
-            <button class="btn-enviar-elegante" id="enviarMensagem">
-              Enviar Mensagem
-            </button>
-          </div>
+            <div class="aba-conteudo ativa" id="minhaMensagem">
+              <div class="form-mensagem-elegante">
+                <div class="form-grid">
+                  <div class="input-group">
+                    <label for="nomeMensagem">Seu nome:</label>
+                    <input
+                      type="text"
+                      id="nomeMensagem"
+                      placeholder="Digite seu nome"
+                    />
+                  </div>
+                  <div class="input-group">
+                    <label for="relacaoMensagem">Sua relação:</label>
+                    <select id="relacaoMensagem">
+                      <option value="">Selecione uma opção</option>
+                      <option value="Família">Família</option>
+                      <option value="Amigo(a)">Amigo(a)</option>
+                      <option value="Colega de trabalho">
+                        Colega de trabalho
+                      </option>
+                      <option value="Padrinho/Madrinha">
+                        Padrinho/Madrinha
+                      </option>
+                      <option value="Convidado(a) especial">
+                        Convidado(a) especial
+                      </option>
+                      <option value="Outro">Outro</option>
+                    </select>
+                  </div>
+                </div>
 
-          <div id="mensagensContainer" class="mensagens-container">
-            <!-- Mensagens aparecerão aqui -->
+                <textarea
+                  id="textoMensagem"
+                  placeholder="Escreva sua mensagem aqui..."
+                ></textarea>
+                <button class="btn-enviar-elegante" id="enviarMensagem">
+                  Enviar Mensagem
+                </button>
+              </div>
+
+              <!-- ÚLTIMAS MENSAGENS (SUA + 2 OUTRAS) -->
+              <div
+                id="ultimasMensagensContainer"
+                class="ultimas-mensagens-container"
+              >
+                <!-- As 3 últimas mensagens aparecerão aqui -->
+              </div>
+            </div>
+
+            <div class="aba-conteudo" id="outrasMensagens">
+              <div id="mensagensContainer" class="mensagens-container">
+                <!-- Todas as outras mensagens aparecerão aqui -->
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -2185,8 +2468,8 @@
             style="
               color: white;
               font-family: 'Parisienne', cursive;
-              font-size: 3rem;
-              margin-bottom: 15px;
+              font-size: 1rem;
+              margin-bottom: 10px;
             "
           >
             José & Laura
@@ -2220,7 +2503,7 @@
             @convitedouradomz
           </a>
 
-          <p class="texto-rodape-elegante">Todos os direitos reservados.</p>
+          <p class="texto-rodape-elegante">©Todos os direitos reservados.</p>
         </div>
       </section>
     </div>
@@ -2347,6 +2630,7 @@
 
     <script>
       // Elementos principais
+
       const btnAbrirConvite = document.getElementById("btnAbrirConvite");
       const conteudoPrincipal = document.getElementById("conteudoPrincipal");
       const btnTocarMusica = document.getElementById("btnTocarMusica");
@@ -2362,10 +2646,13 @@
         ".contador-item-elegante"
       );
       const galeriaItems = document.querySelectorAll(".galeria-item-elegante");
+      const ultimasMensagensContainer = document.getElementById(
+        "ultimasMensagensContainer"
+      );
       const mensagensContainer = document.getElementById("mensagensContainer");
       const enviarMensagemBtn = document.getElementById("enviarMensagem");
 
-      // Mensagens de exemplo (pode remover depois)
+      // Mensagens de exemplo (2 para começar)
       const mensagensExemplo = [
         {
           nome: "Maria Fernandes",
@@ -2383,15 +2670,88 @@
         },
       ];
 
-      // Carregar mensagens salvas
-      function carregarMensagens() {
+      // Sistema de abas para mensagens
+      function mudarAba(idAba) {
+        // Remover classe ativa de todas as abas
+        document.querySelectorAll(".aba").forEach((aba) => {
+          aba.classList.remove("ativa");
+        });
+
+        document.querySelectorAll(".aba-conteudo").forEach((conteudo) => {
+          conteudo.classList.remove("ativa");
+        });
+
+        // Adicionar classe ativa à aba clicada
+        document
+          .querySelector(`.aba[onclick*="${idAba}"]`)
+          .classList.add("ativa");
+        document.getElementById(idAba).classList.add("ativa");
+
+        // Se mudar para "outras mensagens", carregar todas as mensagens
+        if (idAba === "outrasMensagens") {
+          carregarTodasMensagens();
+        }
+      }
+
+      // Carregar últimas 3 mensagens (sua + 2 outras)
+      function carregarUltimasMensagens() {
+        const mensagensSalvas =
+          JSON.parse(localStorage.getItem("mensagensCasamento")) ||
+          mensagensExemplo;
+
+        ultimasMensagensContainer.innerHTML = "";
+
+        if (mensagensSalvas.length === 0) {
+          ultimasMensagensContainer.innerHTML =
+            '<div class="sem-mensagens">Ainda não há mensagens. Seja o primeiro a deixar uma!</div>';
+          return;
+        }
+
+        // Pegar apenas as 3 últimas mensagens
+        const ultimas3Mensagens = mensagensSalvas.slice(0, 3);
+
+        ultimas3Mensagens.forEach((mensagem, index) => {
+          const mensagemCard = document.createElement("div");
+          mensagemCard.className = "mensagem-card";
+          mensagemCard.style.animationDelay = `${index * 0.2}s`;
+
+          mensagemCard.innerHTML = `
+                    <div class="mensagem-header">
+                        <div class="mensagem-autor">${mensagem.nome}</div>
+                        <div class="mensagem-relacao">${mensagem.relacao}</div>
+                    </div>
+                    <div class="mensagem-texto">"${mensagem.texto}"</div>
+                    <div class="mensagem-data">${mensagem.data}</div>
+                `;
+
+          ultimasMensagensContainer.appendChild(mensagemCard);
+        });
+      }
+
+      // Carregar todas as mensagens para a aba "Outras Mensagens"
+      function carregarTodasMensagens() {
         const mensagensSalvas =
           JSON.parse(localStorage.getItem("mensagensCasamento")) ||
           mensagensExemplo;
 
         mensagensContainer.innerHTML = "";
 
-        mensagensSalvas.forEach((mensagem, index) => {
+        if (mensagensSalvas.length === 0) {
+          mensagensContainer.innerHTML =
+            '<div class="sem-mensagens">Ainda não há mensagens. Seja o primeiro a deixar uma!</div>';
+          return;
+        }
+
+        // Pegar todas as mensagens exceto as 3 primeiras
+        const outrasMensagens = mensagensSalvas.slice(3);
+
+        if (outrasMensagens.length === 0) {
+          mensagensContainer.innerHTML =
+            '<div class="sem-mensagens">Todas as mensagens estão sendo exibidas na aba principal.</div>';
+          return;
+        }
+
+        outrasMensagens.forEach((mensagem, index) => {
           const mensagemCard = document.createElement("div");
           mensagemCard.className = "mensagem-card";
           mensagemCard.style.animationDelay = `${index * 0.2}s`;
@@ -2443,8 +2803,8 @@
         document.getElementById("relacaoMensagem").value = "";
         document.getElementById("textoMensagem").value = "";
 
-        // Recarregar mensagens
-        carregarMensagens();
+        // Atualizar as últimas mensagens
+        carregarUltimasMensagens();
 
         // Mostrar popup de confirmação
         const popup = document.getElementById("popupMensagem");
@@ -2454,14 +2814,6 @@
         setTimeout(() => {
           popup.classList.add("ativo");
         }, 50);
-
-        // Rolar para as mensagens
-        setTimeout(() => {
-          mensagensContainer.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }, 500);
       });
 
       // Botão para abrir o convite
@@ -2545,50 +2897,50 @@
               }, 300);
             }
 
+            // Animação para os noivos - primeiro noivo, depois noiva
             if (secao.id === "os-noivos") {
               setTimeout(() => {
                 if (noivo) noivo.classList.add("visivel");
-              }, 200);
+                noivo.style.transition =
+                  "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
+              }, 500);
 
               setTimeout(() => {
                 if (coracaoCentral) coracaoCentral.classList.add("visivel");
-              }, 600);
+                coracaoCentral.style.animation =
+                  "pulsar 1.2s infinite ease-in-out";
+              }, 1200);
 
               setTimeout(() => {
                 if (noiva) noiva.classList.add("visivel");
-              }, 1000);
+                noiva.style.transition =
+                  "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
+              }, 1900);
             }
+          }
+        });
+      }
 
-            if (secao.id === "agenda") {
-              eventosElegantes.forEach((evento, index) => {
-                setTimeout(() => {
-                  evento.classList.add("visivel");
-                }, index * 400);
-              });
-            }
+      // ANIMAÇÃO ESPECÍFICA PARA AGENDA
+      function animarAgendaAoScroll() {
+        const eventos = document.querySelectorAll(".evento-elegante");
+        const alturaJanela = window.innerHeight;
+        const triggerPoint = alturaJanela * 0.8;
 
-            if (secao.id === "contador") {
-              contadorItems.forEach((item, index) => {
-                setTimeout(() => {
-                  item.classList.add("visivel");
-                }, index * 200);
-              });
-            }
+        eventos.forEach((evento, index) => {
+          const topoEvento = evento.getBoundingClientRect().top;
 
-            if (secao.id === "galeria") {
-              galeriaItems.forEach((item, index) => {
-                setTimeout(() => {
-                  item.classList.add("visivel");
-                }, index * 150);
-              });
-            }
+          if (topoEvento < triggerPoint) {
+            setTimeout(() => {
+              evento.classList.add("visivel");
+            }, index * 300);
           }
         });
       }
 
       // Contador regressivo
       function atualizarContador() {
-        const dataCasamento = new Date("September 27, 2026 10:00:00").getTime();
+        const dataCasamento = new Date("2026-09-27T10:00:00").getTime();
         const agora = new Date().getTime();
         const diferenca = dataCasamento - agora;
 
@@ -2637,8 +2989,10 @@
       // Galeria de fotos
       const imagensGaleria = [
         "LauraeJosee3.jpg",
+        "foto2.jpg",
+        "Foto1.jpg",
         "Joseelaura1.jpg",
-        "Foto5.jpg","LauraeJoseeCapa.jpg",
+        "Foto5.jpg",
         "CapJELjpg.jpg",
       ];
 
@@ -2739,6 +3093,36 @@
         texto.textContent = "";
 
         let i = 0;
+        const velocidade = 30;
+
+        function digitar() {
+          if (i < textoOriginal.length) {
+            texto.textContent += textoOriginal.charAt(i);
+            i++;
+            setTimeout(digitar, velocidade);
+          }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(digitar, 200);
+              observer.unobserve(entry.target);
+            }
+          });
+        });
+
+        observer.observe(texto);
+      }
+      // Efeito de digitação no texto romântico
+      function efeitoDigitacao() {
+        const texto = document.querySelector(".texto-destaque");
+        if (!texto) return;
+
+        const textoOriginal = texto.textContent;
+        texto.textContent = "";
+
+        let i = 0;
         const velocidade = 80;
 
         function digitar() {
@@ -2761,17 +3145,75 @@
         observer.observe(texto);
       }
 
+      // <-- AQUI É ONDE VOCÊ COLA O CÓDIGO NOVO! -->
+
+      // ANIMAÇÃO PARA CONTADOR
+      function animarContadorAoScroll() {
+        const contadorSecao = document.getElementById("contador");
+        const contadorItems = document.querySelectorAll(
+          ".contador-item-elegante"
+        );
+        const alturaJanela = window.innerHeight;
+        const triggerPoint = alturaJanela * 0.8;
+
+        if (contadorSecao) {
+          const topoSecao = contadorSecao.getBoundingClientRect().top;
+
+          if (topoSecao < triggerPoint) {
+            contadorItems.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add("visivel");
+              }, index * 200);
+            });
+          }
+        }
+      }
+
+      // ANIMAÇÃO PARA GALERIA
+      function animarGaleriaAoScroll() {
+        const galeriaSecao = document.getElementById("galeria");
+        const galeriaItems = document.querySelectorAll(
+          ".galeria-item-elegante"
+        );
+        const alturaJanela = window.innerHeight;
+        const triggerPoint = alturaJanela * 0.8;
+
+        if (galeriaSecao) {
+          const topoSecao = galeriaSecao.getBoundingClientRect().top;
+
+          if (topoSecao < triggerPoint) {
+            galeriaItems.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add("visivel");
+              }, index * 150);
+            });
+          }
+        }
+      }
+      // <-- E DEPOIS CONTINUA COM O window.addEventListener -->
       // Inicialização
       window.addEventListener("scroll", function () {
         verificarSecoesVisiveis();
         parallaxEfeito();
+        animarAgendaAoScroll();
+        animarContadorAoScroll(); // <-- ADICIONE ESTA LINHA
+        animarGaleriaAoScroll(); // <-- ADICIONE ESTA LINHA
       });
-
       window.addEventListener("load", function () {
         verificarSecoesVisiveis();
         atualizarContador();
         setInterval(atualizarContador, 1000);
-        carregarMensagens();
+
+        // Carregar mensagens iniciais
+        if (!localStorage.getItem("mensagensCasamento")) {
+          localStorage.setItem(
+            "mensagensCasamento",
+            JSON.stringify(mensagensExemplo)
+          );
+        }
+
+        // Carregar últimas 3 mensagens
+        carregarUltimasMensagens();
 
         // Pré-carregar imagens
         const imagensPrecarregar = [
