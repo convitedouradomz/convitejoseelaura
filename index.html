@@ -1,0 +1,2682 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convite de Casamento | José & Laura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Dancing+Script:wght@400;500;600;700&family=Parisienne&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="logoo.jpeg" />
+    <style>
+      :root {
+        --verde-oliva: #8a9a5b;
+        --verde-oliva-suave: #a3af7c;
+        --verde-oliva-claro: #d1d8b8;
+        --creme: #f8f4e9;
+        --creme-claro: #fefcf5;
+        --branco: #ffffff;
+        --dourado: #d4af37;
+        --dourado-claro: #e6c76c;
+        --cinza-escuro: #2c2c2c;
+        --cinza-medio: #5a5a5a;
+        --sombra-suave: rgba(138, 154, 91, 0.15);
+        --sombra-media: rgba(0, 0, 0, 0.1);
+        --sombra-forte: rgba(0, 0, 0, 0.2);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Cormorant Garamond", serif;
+        color: var(--cinza-escuro);
+        background-color: var(--branco);
+        overflow-x: hidden;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      .oculto {
+        display: none;
+      }
+
+      .secao {
+        min-height: 100vh;
+        padding: 80px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+          transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .secao.visivel {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .conteudo-secao {
+        max-width: 1100px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 40px;
+        color: var(--verde-oliva);
+      }
+
+      h1 {
+        font-family: "Parisienne", cursive;
+        font-size: 4.5rem;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
+
+      h2 {
+        font-size: 3rem;
+        position: relative;
+        padding-bottom: 20px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--dourado),
+          transparent
+        );
+      }
+      /* ESTILO DO TÍTULO NA SEÇÃO MÚSICA */
+      #musica h2 {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.6rem;
+        line-height: 1.2;
+        max-width: 900px;
+        margin: 0 auto 10px;
+        letter-spacing: 1px;
+        padding-bottom: 10px;
+      }
+
+      #musica h2::after {
+        display: none;
+      }
+
+      /* ESTILO DA REFERÊNCIA BÍBLICA */
+      #musica .referencia-biblica {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.2rem;
+        color: var(--cinza-medio);
+        font-style: italic;
+        margin: -15px auto 40px;
+        text-align: center;
+        max-width: 700px;
+      }
+
+      p {
+        font-size: 1.4rem;
+        margin-bottom: 25px;
+        text-align: center;
+        line-height: 1.7;
+      }
+
+      /* ANIMAÇÃO DE PÁTINA */
+      @keyframes patina {
+        0% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.7;
+        }
+        100% {
+          opacity: 0.3;
+        }
+      }
+
+      /* CAPA - SCROLL 1 */
+      #capa {
+        background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.5)),
+          url("Capa.jpg") center/cover no-repeat fixed;
+        color: var(--branco);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        opacity: 1;
+        transform: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #capa::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at center,
+          transparent 30%,
+          rgba(0, 0, 0, 0.4) 100%
+        );
+        pointer-events: none;
+      }
+
+      .capa-conteudo {
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+        padding: 30px;
+      }
+
+      #capa h1 {
+        font-family: "Parisienne", cursive;
+        font-size: 5.5rem;
+        margin-bottom: 15px;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        line-height: 1.1;
+        letter-spacing: 2px;
+        animation: aparecer 2s ease-out;
+      }
+
+      #capa .separador-nomes {
+        font-family: "Great Vibes", cursive;
+        font-size: 3.5rem;
+        margin: 10px 0;
+        color: var(--dourado);
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        animation: aparecer 2.2s ease-out;
+        opacity: 0.9;
+      }
+
+      #capa .data {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2rem;
+        margin-top: 30px;
+        letter-spacing: 4px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        animation: aparecer 2.4s ease-out;
+        font-weight: 300;
+        text-transform: uppercase;
+      }
+
+      @keyframes aparecer {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #btnAbrirConvite {
+        background: transparent;
+        color: var(--branco);
+        border: 2px solid var(--dourado);
+        padding: 18px 50px;
+        font-size: 1.3rem;
+        border-radius: 50px;
+        margin-top: 60px;
+        cursor: pointer;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        letter-spacing: 3px;
+        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      #btnAbrirConvite::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(212, 175, 55, 0.3),
+          transparent
+        );
+        transition: left 0.7s ease;
+        z-index: -1;
+      }
+
+      #btnAbrirConvite:hover {
+        background-color: rgba(212, 175, 55, 0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        letter-spacing: 4px;
+      }
+
+      #btnAbrirConvite:hover::before {
+        left: 100%;
+      }
+
+      /* SETA INDICATIVA */
+      .seta-scroll {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--dourado);
+        font-size: 2rem;
+        animation: flutuar 2s infinite ease-in-out;
+        opacity: 0.7;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      @keyframes flutuar {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+      }
+
+      /* MÚSICA DE FUNDO - SCROLL 2 */
+      #musica {
+        background-color: var(--creme-claro);
+        position: relative;
+        overflow: hidden;
+      }
+
+      #musica::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238a9a5b' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .container-foto-musica {
+        position: relative;
+        max-width: 500px;
+        margin: 0 auto 50px;
+        z-index: 1;
+      }
+
+      .moldura-principal {
+        width: 100%;
+        height: 600px;
+        position: relative;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        transform: perspective(1000px) rotateY(0deg);
+        transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .moldura-principal:hover {
+        transform: perspective(1000px) rotateY(-5deg);
+      }
+
+      .foto-casal-principal {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: sepia(0.1) contrast(1.05) brightness(1.05);
+      }
+
+      .moldura-principal::before,
+      .moldura-principal::after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border: 3px solid var(--dourado);
+        z-index: 2;
+      }
+
+      .moldura-principal::before {
+        top: 20px;
+        left: 20px;
+        border-right: none;
+        border-bottom: none;
+      }
+
+      .moldura-principal::after {
+        bottom: 20px;
+        right: 20px;
+        border-left: none;
+        border-top: none;
+      }
+
+      .player-musica {
+        text-align: center;
+        margin-top: 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .player-musica p {
+        font-size: 1.5rem;
+        font-style: italic;
+        color: var(--cinza-medio);
+        margin-bottom: 25px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .player-musica p::before,
+      .player-musica p::after {
+        content: "♪";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--verde-oliva);
+        font-size: 1.8rem;
+      }
+
+      .player-musica p::before {
+        left: -35px;
+      }
+
+      .player-musica p::after {
+        right: -35px;
+      }
+
+      #btnTocarMusica {
+        background: transparent;
+        color: var(--verde-oliva);
+        border: 1.5px solid var(--verde-oliva);
+        padding: 12px 35px;
+        font-size: 1.2rem;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        transition: all 0.4s ease;
+        display: none;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #btnTocarMusica.visivel {
+        display: block;
+      }
+
+      #btnTocarMusica:hover {
+        background-color: var(--verde-oliva);
+        color: var(--branco);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px var(--sombra-suave);
+      }
+
+      /* TEXTO ROMÂNTICO - SCROLL 3 */
+      #texto-romantico {
+        background: linear-gradient(
+          135deg,
+          var(--creme) 0%,
+          var(--branco) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .texto-destaque {
+        font-family: "Great Vibes", cursive;
+        font-size: 4rem;
+        text-align: center;
+        color: var(--verde-oliva);
+        margin: 40px auto 60px;
+        max-width: 800px;
+        line-height: 1.3;
+        position: relative;
+        padding: 30px 40px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      .texto-destaque.visivel {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .texto-destaque::before,
+      .texto-destaque::after {
+        content: "❧";
+        position: absolute;
+        color: var(--dourado);
+        font-size: 3rem;
+        opacity: 0.7;
+      }
+
+      .texto-destaque::before {
+        top: 0;
+        left: 10px;
+      }
+
+      .texto-destaque::after {
+        bottom: 0;
+        right: 10px;
+        transform: rotate(180deg);
+      }
+
+      /* SAUDAÇÃO - SCROLL 4 */
+      #saudacao {
+        background-color: var(--branco);
+        position: relative;
+      }
+
+      #saudacao::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238a9a5b' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        opacity: 0.5;
+        z-index: 0;
+      }
+
+      .texto-saudacao {
+        font-size: 1.6rem;
+        font-style: italic;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+        color: var(--cinza-escuro);
+        padding: 0 20px;
+      }
+
+      .texto-saudacao-destaque {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.5rem;
+        color: var(--verde-oliva);
+        margin: 20px 0;
+        display: block;
+      }
+
+      /* OS NOIVOS - SCROLL 5 */
+      #os-noivos {
+        background: linear-gradient(
+          135deg,
+          var(--creme) 0%,
+          var(--creme-claro) 100%
+        );
+        position: relative;
+      }
+
+      .container-noivos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        margin-top: 40px;
+      }
+
+      .noivo,
+      .noiva {
+        flex: 1;
+        min-width: 280px;
+        max-width: 320px;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      .noiva {
+        transform: translateX(50px);
+      }
+
+      .noivo.visivel,
+      .noiva.visivel {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .container-foto-noivo,
+      .container-foto-noiva {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 25px;
+        position: relative;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border: 8px solid var(--branco);
+      }
+
+      .foto-noivo,
+      .foto-noiva {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s ease;
+      }
+
+      .container-foto-noivo:hover .foto-noivo,
+      .container-foto-noiva:hover .foto-noiva {
+        transform: scale(1.05);
+      }
+
+      .nome-noivo,
+      .nome-noiva {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        color: var(--verde-oliva);
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+      }
+
+      .pais {
+        font-size: 1.3rem;
+        color: var(--cinza-medio);
+        line-height: 1.5;
+      }
+
+      .pais strong {
+        color: var(--verde-oliva);
+        font-weight: 600;
+      }
+
+      .coracao-central {
+        margin: 0 30px;
+        font-size: 4rem;
+        color: var(--dourado);
+        animation: pulsar 3s infinite ease-in-out;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      .coracao-central.visivel {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      @keyframes pulsar {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+      }
+
+      /* AGENDA - SCROLL 6 */
+      #agenda {
+        background-color: var(--branco);
+        position: relative;
+      }
+
+      .timeline-elegante {
+        max-width: 900px;
+        margin: 60px auto 0;
+        position: relative;
+      }
+
+      .timeline-elegante::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--dourado),
+          var(--verde-oliva),
+          var(--dourado),
+          transparent
+        );
+      }
+
+      .evento-elegante {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 70px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .evento-elegante.visivel {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .evento-elegante:nth-child(odd) {
+        flex-direction: row;
+      }
+
+      .evento-elegante:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+
+      .circulo-tempo {
+        width: 20px;
+        height: 20px;
+        background-color: var(--verde-oliva);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        border: 4px solid var(--branco);
+        box-shadow: 0 0 0 4px var(--dourado-claro);
+      }
+
+      .icone-evento-elegante {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(
+          135deg,
+          var(--verde-oliva),
+          var(--verde-oliva-suave)
+        );
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 2rem;
+        z-index: 3;
+        flex-shrink: 0;
+        box-shadow: 0 10px 25px rgba(138, 154, 91, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .icone-evento-elegante::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        border-radius: 50%;
+      }
+
+      .info-evento-elegante {
+        width: 48%;
+        padding: 35px 30px;
+        background-color: var(--creme-claro);
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        position: relative;
+        border-top: 4px solid var(--dourado);
+      }
+
+      .evento-elegante:nth-child(odd) .info-evento-elegante {
+        margin-left: 40px;
+        text-align: left;
+      }
+
+      .evento-elegante:nth-child(even) .info-evento-elegante {
+        margin-right: 40px;
+        text-align: right;
+      }
+
+      .hora-evento-elegante {
+        font-weight: 700;
+        color: var(--dourado);
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+        font-family: "Playfair Display", serif;
+      }
+
+      .titulo-evento-elegante {
+        font-size: 1.7rem;
+        margin-bottom: 12px;
+        font-family: "Playfair Display", serif;
+        color: var(--verde-oliva);
+      }
+
+      .local-evento-elegante {
+        font-style: italic;
+        margin-bottom: 20px;
+        color: var(--cinza-medio);
+        font-size: 1.2rem;
+      }
+
+      .btn-mapa-elegante {
+        background: transparent;
+        color: var(--verde-oliva);
+        border: 1.5px solid var(--verde-oliva);
+        padding: 10px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.4s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+
+      .btn-mapa-elegante:hover {
+        background-color: var(--verde-oliva);
+        color: var(--branco);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px var(--sombra-suave);
+      }
+
+      /* CONTADOR - SCROLL 7 */
+      #contador {
+        background: linear-gradient(
+          135deg,
+          var(--verde-oliva-claro) 0%,
+          var(--creme) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      #contador::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238a9a5b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      .contador-container-elegante {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 50px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .contador-item-elegante {
+        text-align: center;
+        min-width: 140px;
+        padding: 30px 20px;
+        background-color: rgba(255, 255, 255, 0.85);
+        border-radius: 15px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .contador-item-elegante.visivel {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .contador-numero-elegante {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--verde-oliva);
+        line-height: 1;
+        margin-bottom: 10px;
+        font-family: "Playfair Display", serif;
+      }
+
+      .contador-label-elegante {
+        font-size: 1.2rem;
+        color: var(--cinza-medio);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* GALERIA - SCROLL 8 */
+      #galeria {
+        background-color: var(--creme-claro);
+        position: relative;
+      }
+
+      .galeria-container-elegante {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+        margin-top: 50px;
+      }
+
+      .galeria-item-elegante {
+        height: 250px;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+
+      .galeria-item-elegante.visivel {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .galeria-item-elegante:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .galeria-img-elegante {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      .galeria-item-elegante:hover .galeria-img-elegante {
+        transform: scale(1.1);
+      }
+
+      .galeria-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .galeria-item-elegante:hover .galeria-overlay {
+        opacity: 1;
+      }
+
+      .galeria-overlay i {
+        color: white;
+        font-size: 2.5rem;
+        opacity: 0.8;
+      }
+
+      /* MODAL GALERIA */
+      .modal-elegante {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.92);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .modal-elegante.ativo {
+        display: flex;
+        opacity: 1;
+      }
+
+      .modal-img-elegante {
+        max-width: 90%;
+        max-height: 85%;
+        object-fit: contain;
+        transform: scale(0.9);
+        transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        border-radius: 5px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-elegante.ativo .modal-img-elegante {
+        transform: scale(1);
+      }
+
+      .fechar-modal-elegante {
+        position: absolute;
+        top: 25px;
+        right: 35px;
+        color: white;
+        font-size: 3.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        opacity: 0.7;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .fechar-modal-elegante:hover {
+        color: var(--dourado);
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      /* RSVP - SCROLL 9 */
+      #rsvp {
+        background-color: var(--branco);
+        position: relative;
+      }
+
+      .rsvp-container-elegante {
+        text-align: center;
+        max-width: 700px;
+        margin: 50px auto 0;
+        padding: 40px;
+        background-color: var(--creme-claro);
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        border-top: 4px solid var(--dourado);
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-whatsapp-elegante {
+        background: linear-gradient(135deg, #25d366, #1da851);
+        color: white;
+        border: none;
+        padding: 18px 50px;
+        font-size: 1.4rem;
+        border-radius: 50px;
+        margin-top: 30px;
+        cursor: pointer;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700;
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        letter-spacing: 1px;
+      }
+
+      .btn-whatsapp-elegante:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        letter-spacing: 1.5px;
+      }
+
+      /* MENSAGENS - SCROLL 10 */
+      #mensagens {
+        background: linear-gradient(
+          135deg,
+          var(--creme) 0%,
+          var(--creme-claro) 100%
+        );
+        position: relative;
+      }
+
+      .form-mensagem-elegante {
+        max-width: 700px;
+        margin: 50px auto 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      textarea {
+        width: 100%;
+        height: 180px;
+        padding: 25px;
+        font-size: 1.3rem;
+        font-family: "Cormorant Garamond", serif;
+        border: 1.5px solid var(--verde-oliva-claro);
+        border-radius: 15px;
+        resize: vertical;
+        margin-bottom: 30px;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: var(--verde-oliva);
+        box-shadow: 0 15px 40px rgba(138, 154, 91, 0.15);
+        background-color: white;
+      }
+
+      textarea::placeholder {
+        color: var(--cinza-medio);
+        font-style: italic;
+      }
+
+      .btn-enviar-elegante {
+        background: linear-gradient(
+          135deg,
+          var(--verde-oliva),
+          var(--verde-oliva-suave)
+        );
+        color: white;
+        border: none;
+        padding: 15px 50px;
+        font-size: 1.4rem;
+        border-radius: 50px;
+        cursor: pointer;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700;
+        display: block;
+        margin: 0 auto;
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        box-shadow: 0 10px 30px rgba(138, 154, 91, 0.3);
+        letter-spacing: 1px;
+      }
+
+      .btn-enviar-elegante:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(138, 154, 91, 0.4);
+        letter-spacing: 1.5px;
+      }
+
+      .popup-mensagem-elegante {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        background-color: white;
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        z-index: 1100;
+        text-align: center;
+        max-width: 500px;
+        width: 90%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        border-top: 5px solid var(--dourado);
+      }
+
+      .popup-mensagem-elegante.ativo {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .popup-mensagem-elegante h3 {
+        color: var(--verde-oliva);
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      /* OVERLAY PARA MODAIS */
+      .overlay-elegante {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        z-index: 1000;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .overlay-elegante.ativo {
+        display: block;
+        opacity: 1;
+      }
+
+      /* PRESENTES - SCROLL 11 */
+      #presentes {
+        background-color: var(--branco);
+        position: relative;
+      }
+
+      .opcoes-presentes-elegante {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin-top: 50px;
+      }
+
+      .btn-presente-elegante {
+        background: linear-gradient(135deg, var(--creme-claro), white);
+        border: 1.5px solid var(--verde-oliva-claro);
+        padding: 25px 40px;
+        border-radius: 15px;
+        cursor: pointer;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--verde-oliva);
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        min-width: 250px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-presente-elegante::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--dourado), var(--verde-oliva));
+      }
+
+      .btn-presente-elegante:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+        border-color: var(--verde-oliva);
+      }
+
+      .btn-presente-elegante i {
+        font-size: 2.5rem;
+        color: var(--dourado);
+      }
+
+      .modal-presente-elegante {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        background-color: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        z-index: 1100;
+        max-width: 550px;
+        width: 90%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        border-top: 5px solid var(--dourado);
+      }
+
+      .modal-presente-elegante.ativo {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .info-pagamento-elegante {
+        margin-top: 25px;
+      }
+
+      .metodo-pagamento-elegante {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: var(--creme-claro);
+        border-radius: 12px;
+        border-left: 4px solid var(--dourado);
+        transition: transform 0.3s ease;
+      }
+
+      .metodo-pagamento-elegante:hover {
+        transform: translateX(5px);
+        background-color: rgba(138, 154, 91, 0.05);
+      }
+
+      .metodo-pagamento-elegante i {
+        font-size: 2.5rem;
+        color: var(--verde-oliva);
+        margin-right: 20px;
+        min-width: 50px;
+      }
+
+      .fechar-modal-presente-elegante {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--cinza-medio);
+        transition: color 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .fechar-modal-presente-elegante:hover {
+        color: var(--verde-oliva);
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      /* RODAPÉ - SCROLL FINAL */
+      #rodape {
+        background: linear-gradient(
+          135deg,
+          var(--verde-oliva) 0%,
+          #6c7c4a 100%
+        );
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #rodape::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .assinatura-elegante {
+        font-family: "Parisienne", cursive;
+        font-size: 3.5rem;
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .iniciais-elegante {
+        font-family: "Great Vibes", cursive;
+        font-size: 5.5rem;
+        letter-spacing: 25px;
+        margin: 30px 0 40px;
+        color: var(--dourado-claro);
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo-rodape-elegante {
+        max-width: 180px;
+        margin: 40px auto;
+        display: block;
+        position: relative;
+        z-index: 1;
+        opacity: 0.9;
+      }
+
+      .instagram-link-elegante {
+        color: white;
+        font-size: 2rem;
+        margin-top: 30px;
+        display: inline-block;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.1);
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 40px auto 0;
+      }
+
+      .instagram-link-elegante:hover {
+        color: var(--dourado);
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .texto-rodape-elegante {
+        font-size: 1.1rem;
+        margin-top: 15px;
+        opacity: 0.8;
+        position: relative;
+        z-index: 1;
+        line-height: 1.5;
+      }
+
+      /* RESPONSIVIDADE */
+      @media (max-width: 992px) {
+        h1 {
+          font-size: 3.8rem;
+        }
+
+        h2 {
+          font-size: 2.5rem;
+        }
+
+        #capa h1 {
+          font-size: 4.5rem;
+        }
+
+        .texto-destaque {
+          font-size: 3.2rem;
+          padding: 20px 30px;
+        }
+
+        .iniciais-elegante {
+          font-size: 4.5rem;
+          letter-spacing: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 3.2rem;
+        }
+
+        h2 {
+          font-size: 2.2rem;
+        }
+
+        #capa h1 {
+          font-size: 3.8rem;
+        }
+
+        #capa .separador-nomes {
+          font-size: 2.8rem;
+        }
+
+        .container-noivos {
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .coracao-central {
+          margin: 20px 0;
+          transform: rotate(90deg);
+        }
+
+        .timeline-elegante::before {
+          left: 40px;
+        }
+
+        .evento-elegante,
+        .evento-elegante:nth-child(odd),
+        .evento-elegante:nth-child(even) {
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+
+        .circulo-tempo {
+          left: 40px;
+        }
+
+        .icone-evento-elegante {
+          position: absolute;
+          left: 40px;
+          transform: translateX(-50%);
+          width: 70px;
+          height: 70px;
+          font-size: 1.8rem;
+        }
+
+        .info-evento-elegante,
+        .evento-elegante:nth-child(odd) .info-evento-elegante,
+        .evento-elegante:nth-child(even) .info-evento-elegante {
+          width: calc(100% - 100px);
+          margin-left: 100px;
+          text-align: left;
+        }
+
+        .galeria-container-elegante {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .galeria-item-elegante {
+          height: 200px;
+        }
+
+        .iniciais-elegante {
+          font-size: 3.8rem;
+          letter-spacing: 15px;
+        }
+
+        .contador-item-elegante {
+          min-width: 120px;
+          padding: 25px 15px;
+        }
+
+        .contador-numero-elegante {
+          font-size: 3rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .secao {
+          padding: 60px 15px;
+        }
+
+        h1 {
+          font-size: 2.8rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        #capa h1 {
+          font-size: 3.2rem;
+        }
+
+        #capa .data {
+          font-size: 1.6rem;
+          letter-spacing: 2px;
+        }
+
+        .texto-destaque {
+          font-size: 2.5rem;
+          padding: 15px 20px;
+        }
+
+        .texto-destaque::before,
+        .texto-destaque::after {
+          font-size: 2.2rem;
+        }
+
+        .moldura-principal {
+          height: 500px;
+        }
+
+        .container-foto-noivo,
+        .container-foto-noiva {
+          width: 180px;
+          height: 180px;
+        }
+
+        .nome-noivo,
+        .nome-noiva {
+          font-size: 1.8rem;
+        }
+
+        .timeline-elegante::before {
+          left: 30px;
+        }
+
+        .icone-evento-elegante {
+          left: 30px;
+          width: 60px;
+          height: 60px;
+          font-size: 1.6rem;
+        }
+
+        .info-evento-elegante,
+        .evento-elegante:nth-child(odd) .info-evento-elegante,
+        .evento-elegante:nth-child(even) .info-evento-elegante {
+          width: calc(100% - 80px);
+          margin-left: 80px;
+          padding: 25px 20px;
+        }
+
+        .titulo-evento-elegante {
+          font-size: 1.5rem;
+        }
+
+        .iniciais-elegante {
+          font-size: 3rem;
+          letter-spacing: 10px;
+        }
+
+        .contador-item-elegante {
+          min-width: 100px;
+          padding: 20px 10px;
+        }
+
+        .contador-numero-elegante {
+          font-size: 2.5rem;
+        }
+
+        .galeria-container-elegante {
+          grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+
+        .galeria-item-elegante {
+          height: 160px;
+        }
+
+        .btn-presente-elegante {
+          min-width: 100%;
+          padding: 20px 30px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        #capa h1 {
+          font-size: 2.8rem;
+        }
+
+        #capa .separador-nomes {
+          font-size: 2.2rem;
+        }
+
+        .iniciais-elegante {
+          font-size: 2.5rem;
+          letter-spacing: 8px;
+        }
+      }
+      /* DATA PEQUENA E DISCRETA */
+      .data-pequena {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem; /* BEM PEQUENO */
+        color: var(--verde-oliva);
+        margin: 15px 0; /* Margem pequena */
+        padding: 8px 15px; /* Padding pequeno */
+        background-color: rgba(138, 154, 91, 0.05); /* Muito suave */
+        border-radius: 8px;
+        display: inline-block;
+        letter-spacing: 0.5px;
+        opacity: 0.9;
+      }
+
+      .data-pequena i {
+        margin-right: 8px;
+        color: var(--dourado);
+        font-size: 1.1rem;
+      }
+      /* ANÉIS E TEXTO BÍBLICO */
+      .com-aneis-esquerda {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        font-family: "Dancing Script", cursive;
+        font-size: 3rem;
+        line-height: 1.2;
+        max-width: 900px;
+        margin: 0 auto 10px;
+        letter-spacing: 1px;
+        padding-bottom: 10px;
+        color: #8a9a5b;
+      }
+
+      .com-aneis-esquerda::after {
+        display: none;
+      }
+
+      .aneis-icone {
+        position: relative;
+        margin-right: 25px;
+        font-size: 2.5rem;
+        color: var(--dourado);
+        flex-shrink: 0;
+        width: 60px;
+        height: 40px;
+      }
+
+      .aneis-icone i {
+        position: absolute;
+      }
+
+      .aneis-icone i:nth-child(1) {
+        top: 0;
+        left: 0;
+        color: var(--dourado);
+        z-index: 1;
+      }
+
+      .aneis-icone i:nth-child(2) {
+        top: 8px;
+        left: 8px;
+        color: var(--dourado);
+        opacity: 0.8;
+        transform: rotate(15deg);
+        z-index: 2;
+      }
+
+      .referencia-biblica {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.5rem;
+        color: var(--cinza-medio);
+        font-style: italic;
+        margin: -15px auto 40px;
+        text-align: center;
+        max-width: 700px;
+      }
+      .instagram-texto {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--dourado-claro);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        text-decoration: none;
+        margin-top: 25px;
+        padding: 10px 25px;
+        background-color: rgba(255, 255, 255, 0.08);
+        border-radius: 50px;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+      }
+
+      .instagram-texto i {
+        font-size: 1.3rem;
+        background: radial-gradient(
+          circle at 30% 107%,
+          #fdf497 0%,
+          #fdf497 5%,
+          #fd5949 45%,
+          #d6249f 60%,
+          #285aeb 90%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .instagram-texto:hover {
+        color: white;
+        background-color: rgba(212, 175, 55, 0.2);
+        border-color: var(--dourado);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .instagram-texto:hover i {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CAPA - SCROLL 1 -->
+    <section id="capa" class="secao visivel">
+      <div class="capa-conteudo">
+        <h1>José Alberto Manhique</h1>
+        <div class="separador-nomes">&</div>
+        <h1>Laura Isabel Correia</h1>
+        <p class="data">27 de Setembro de 2026</p>
+        <button id="btnAbrirConvite">Abrir Convite</button>
+      </div>
+      <div
+        class="seta-scroll"
+        onclick="document.getElementById('conteudoPrincipal').scrollIntoView({behavior: 'smooth'})"
+      >
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL (inicialmente oculto) -->
+    <div id="conteudoPrincipal" class="oculto">
+      <!-- MÚSICA E FOTO - SCROLL 2 -->
+      <section id="musica" class="secao">
+        <div class="conteudo-secao">
+          <h2 class="com-aneis-esquerda">
+            <span class="aneis-icone">
+              <i class="fas fa-ring"></i>
+              <i class="fas fa-ring"></i>
+            </span>
+            "Portanto, deixarão de ser dois e tornar-se-ão uma só carne."
+          </h2>
+          <p class="referencia-biblica">— Génesis 2:24</p>
+          <div class="container-foto-musica">
+            <div class="moldura-principal">
+              <img
+                src="CapJELjpg.jpg"
+                alt="José e Laura"
+                class="foto-casal-principal"
+              />
+            </div>
+          </div>
+          <div class="player-musica">
+            <p>Ouça a música do nosso amor</p>
+            <button id="btnTocarMusica">Tocar música</button>
+            <audio id="musicaFundo" loop>
+              <source src="Alex Warren - Ordinary .mp3" type="audio/mpeg" />
+              Seu navegador não suporta o elemento de áudio.
+            </audio>
+          </div>
+        </div>
+      </section>
+
+      <!-- TEXTO ROMÂNTICO - SCROLL 3 -->
+      <section id="texto-romantico" class="secao">
+        <div class="conteudo-secao">
+          <h2>Uma Alma em Dois Corpos</h2>
+          <div class="texto-destaque">
+            "O amor é composto por uma única alma habitando dois corpos."
+          </div>
+          <p
+            style="
+              font-size: 1.3rem;
+              color: var(--cinza-medio);
+              font-style: italic;
+              max-width: 700px;
+              margin: 0 auto;
+            "
+          >
+            — Aristóteles
+          </p>
+        </div>
+      </section>
+
+      <!-- SAUDAÇÃO - SCROLL 4 -->
+      <section id="saudacao" class="secao">
+        <div class="conteudo-secao">
+          <h2>Com Muito Amor</h2>
+          <p class="texto-saudacao">
+            "Com amor, temos o prazer de convidar para celebrar connosco este
+            momento especial."
+          </p>
+          <!-- AQUI VAI A DATA (ADICIONE ESTAS DUAS LINHAS) -->
+          <div class="data-pequena">
+            <i class="fas fa-calendar-alt"></i> 27 de Setembro de 2026
+          </div>
+          <span class="texto-saudacao-destaque"
+            >(Convite válido para duas pessoas)</span
+          >
+        </div>
+      </section>
+
+      <!-- OS NOIVOS - SCROLL 5 -->
+      <section id="os-noivos" class="secao">
+        <div class="conteudo-secao">
+          <h2>Os Noivos</h2>
+          <div class="container-noivos">
+            <div class="noivo">
+              <div class="container-foto-noivo">
+                <img
+                  src="Jose.jpg"
+                  alt="José Alberto Manhique"
+                  class="foto-noivo"
+                />
+              </div>
+              <h3 class="nome-noivo">José Alberto Manhique</h3>
+              <p class="pais">
+                Filho de <strong>João Alberto Manhique</strong> e
+                <strong>Flora Zanqueu Manhique</strong>
+              </p>
+            </div>
+
+            <div class="coracao-central">
+              <i class="fas fa-heart"></i>
+            </div>
+
+            <div class="noiva">
+              <div class="container-foto-noiva">
+                <img
+                  src="Lauraa.jpg"
+                  alt="Laura Isabel Correia"
+                  class="foto-noiva"
+                />
+              </div>
+              <h3 class="nome-noiva">Laura Isabel Correia</h3>
+              <p class="pais">
+                Filha de <strong>Pedro Manuel Correia</strong> e
+                <strong>Isabel da Costa Correia</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AGENDA - SCROLL 6 -->
+      <section id="agenda" class="secao">
+        <div class="conteudo-secao">
+          <h2>Nosso Dia Especial</h2>
+          <div class="timeline-elegante">
+            <div class="evento-elegante">
+              <div class="circulo-tempo"></div>
+              <div class="icone-evento-elegante">
+                <i class="fas fa-church"></i>
+              </div>
+              <div class="info-evento-elegante">
+                <div class="hora-evento-elegante">10h</div>
+                <div class="titulo-evento-elegante">Cerimónia Religiosa</div>
+                <div class="local-evento-elegante">
+                  Igreja Nossa Senhora das Vitórias
+                </div>
+                <button
+                  class="btn-mapa-elegante"
+                  onclick="window.open('https://maps.app.goo.gl/AciufbwcEF6U7EFw7', '_blank')"
+                >
+                  <i class="fas fa-map-marker-alt"></i> Ver no mapa
+                </button>
+              </div>
+            </div>
+
+            <div class="evento-elegante">
+              <div class="circulo-tempo"></div>
+              <div class="icone-evento-elegante">
+                <i class="fas fa-landmark"></i>
+              </div>
+              <div class="info-evento-elegante">
+                <div class="hora-evento-elegante">12h</div>
+                <div class="titulo-evento-elegante">Cerimónia Civil</div>
+                <div class="local-evento-elegante">Hotel Cardoso</div>
+                <button
+                  class="btn-mapa-elegante"
+                  onclick="window.open('https://maps.app.goo.gl/RWJ5ahBue5NDHR1M9', '_blank')"
+                >
+                  <i class="fas fa-map-marker-alt"></i> Ver no mapa
+                </button>
+              </div>
+            </div>
+
+            <div class="evento-elegante">
+              <div class="circulo-tempo"></div>
+              <div class="icone-evento-elegante">
+                <i class="fas fa-camera"></i>
+              </div>
+              <div class="info-evento-elegante">
+                <div class="hora-evento-elegante">14h</div>
+                <div class="titulo-evento-elegante">Sessão de Fotos</div>
+                <div class="local-evento-elegante">Jardim dos Namorados</div>
+                <button
+                  class="btn-mapa-elegante"
+                  onclick="window.open('https://maps.app.goo.gl/MGJ2zDsdBfyZCXok8', '_blank')"
+                >
+                  <i class="fas fa-map-marker-alt"></i> Ver no mapa
+                </button>
+              </div>
+            </div>
+
+            <div class="evento-elegante">
+              <div class="circulo-tempo"></div>
+              <div class="icone-evento-elegante">
+                <i class="fas fa-glass-cheers"></i>
+              </div>
+              <div class="info-evento-elegante">
+                <div class="hora-evento-elegante">16h</div>
+                <div class="titulo-evento-elegante">Copo d'Água</div>
+                <div class="local-evento-elegante">Salão de Eventos Evelyn</div>
+                <button
+                  class="btn-mapa-elegante"
+                  onclick="window.open('https://maps.app.goo.gl/nriC6vmNbrqcHZKz8', '_blank')"
+                >
+                  <i class="fas fa-map-marker-alt"></i> Ver no mapa
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTADOR - SCROLL 7 -->
+      <section id="contador" class="secao">
+        <div class="conteudo-secao">
+          <h2>Contagem Regressiva</h2>
+          <div class="contador-container-elegante">
+            <div class="contador-item-elegante">
+              <div id="dias" class="contador-numero-elegante">00</div>
+              <div class="contador-label-elegante">Dias</div>
+            </div>
+            <div class="contador-item-elegante">
+              <div id="horas" class="contador-numero-elegante">00</div>
+              <div class="contador-label-elegante">Horas</div>
+            </div>
+            <div class="contador-item-elegante">
+              <div id="minutos" class="contador-numero-elegante">00</div>
+              <div class="contador-label-elegante">Minutos</div>
+            </div>
+            <div class="contador-item-elegante">
+              <div id="segundos" class="contador-numero-elegante">00</div>
+              <div class="contador-label-elegante">Segundos</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALERIA - SCROLL 8 -->
+      <section id="galeria" class="secao">
+        <div class="conteudo-secao">
+          <h2>Nossos Momentos</h2>
+          <div class="galeria-container-elegante">
+            <div class="galeria-item-elegante" onclick="abrirModal(0)">
+              <img
+                src="LauraeJosee3.jpg"
+                alt="José e Laura"
+                class="galeria-img-elegante"
+              />
+              <div class="galeria-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="galeria-item-elegante" onclick="abrirModal(1)">
+              <img
+                src="Foto1.jpg"
+                alt="José e Laura"
+                class="galeria-img-elegante"
+              />
+              <div class="galeria-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="galeria-item-elegante" onclick="abrirModal(2)">
+              <img
+                src="Foto5.jpg"
+                alt="José e Laura"
+                class="galeria-img-elegante"
+              />
+              <div class="galeria-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="galeria-item-elegante" onclick="abrirModal(3)">
+              <img
+                src="CapJELjpg.jpg"
+                alt="José e Laura"
+                class="galeria-img-elegante"
+              />
+              <div class="galeria-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP - SCROLL 9 -->
+      <section id="rsvp" class="secao">
+        <div class="conteudo-secao">
+          <h2>Confirmação de Presença</h2>
+          <div class="rsvp-container-elegante">
+            <p style="font-size: 1.4rem; color: var(--cinza-medio)">
+              Por favor, confirme sua presença até 15 de Setembro de 2026
+            </p>
+            <a
+              href="https://wa.me/258860660750?text=Olá, confirmo a minha presença no casamento do José e da Laura, no dia 27 de Setembro de 2026. Número de convidados: "
+              class="btn-whatsapp-elegante"
+              target="_blank"
+            >
+              <i class="fab fa-whatsapp"></i> Confirmar pelo WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENSAGENS - SCROLL 10 -->
+      <section id="mensagens" class="secao">
+        <div class="conteudo-secao">
+          <h2>Mensagens Especiais</h2>
+          <div class="form-mensagem-elegante">
+            <p
+              style="
+                font-size: 1.4rem;
+                color: var(--cinza-medio);
+                margin-bottom: 30px;
+              "
+            >
+              Deixe uma mensagem especial para os noivos que será lida no dia do
+              casamento.
+            </p>
+            <textarea
+              id="textoMensagem"
+              placeholder="Escreva sua mensagem aqui..."
+            ></textarea>
+            <button class="btn-enviar-elegante" id="enviarMensagem">
+              Enviar Mensagem
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRESENTES - SCROLL 11 -->
+      <section id="presentes" class="secao">
+        <div class="conteudo-secao">
+          <h2>Sugestões de Presentes</h2>
+          <p
+            style="
+              font-size: 1.4rem;
+              color: var(--cinza-medio);
+              max-width: 700px;
+              margin: 0 auto 20px;
+            "
+          >
+            "A sua presença é o nosso maior presente.<br />Se desejar oferecer
+            algo mais, deixamos algumas sugestões."
+          </p>
+
+          <div class="opcoes-presentes-elegante">
+            <button class="btn-presente-elegante" id="btnPresenteMonetario">
+              <i class="fas fa-gift"></i>
+              Presente Monetário
+            </button>
+            <button class="btn-presente-elegante" id="btnPresentesMateriais">
+              <i class="fas fa-store"></i>
+              Presentes Materiais
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RODAPÉ - SCROLL FINAL -->
+      <section id="rodape" class="secao">
+        <div class="conteudo-secao">
+          <p class="assinatura-elegante">Com amor,</p>
+          <h1
+            style="
+              color: white;
+              font-family: 'Parisienne', cursive;
+              font-size: 3.5rem;
+              margin-bottom: 20px;
+            "
+          >
+            José & Laura
+          </h1>
+
+          <div class="iniciais-elegante">J E L</div>
+
+          <p
+            style="
+              color: rgba(255, 255, 255, 0.9);
+              font-size: 1.3rem;
+              margin: 20px 0;
+            "
+          >
+            Um convite digital para o casamento de José e Laura<br />por
+            Convites Dourados MZ
+          </p>
+
+          <img
+            src="logoCD.jpg"
+            alt="Convites Dourados MZ"
+            class="logo-rodape-elegante"
+          />
+
+          <a
+            href="https://www.instagram.com/convitedouradomz"
+            class="instagram-texto"
+            target="_blank"
+          >
+            <i
+              class="fab fa-instagram"
+              style="margin-right: 8px; font-size: 1.2rem"
+            ></i>
+            @convitedouradomz
+          </a>
+
+          <p class="texto-rodape-elegante">Todos os direitos reservados.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- MODAL GALERIA -->
+    <div id="modalGaleria" class="modal-elegante">
+      <span class="fechar-modal-elegante" onclick="fecharModal()">&times;</span>
+      <img class="modal-img-elegante" id="imagemModal" src="" alt="" />
+    </div>
+
+    <!-- MODAIS PRESENTES -->
+    <div id="modalPresenteMonetario" class="modal-presente-elegante">
+      <span
+        class="fechar-modal-presente-elegante"
+        onclick="fecharModalPresente('modalPresenteMonetario')"
+        >&times;</span
+      >
+      <h3>Presente Monetário</h3>
+      <div class="info-pagamento-elegante">
+        <div class="metodo-pagamento-elegante">
+          <i class="fas fa-mobile-alt"></i>
+          <div>
+            <strong style="font-size: 1.3rem">M-Pesa</strong><br />
+            <span style="font-size: 1.2rem">+258 844098845</span><br />
+            <em style="color: var(--cinza-medio)"
+              >(Titular: José Alberto Manhique)</em
+            >
+          </div>
+        </div>
+
+        <div class="metodo-pagamento-elegante">
+          <i class="fas fa-wallet"></i>
+          <div>
+            <strong style="font-size: 1.3rem">E-Mola</strong><br />
+            <span style="font-size: 1.2rem">+258 86934521</span><br />
+            <em style="color: var(--cinza-medio)"
+              >(Titular: Laura Isabel Correia)</em
+            >
+          </div>
+        </div>
+
+        <div class="metodo-pagamento-elegante">
+          <i class="fas fa-university"></i>
+          <div>
+            <strong style="font-size: 1.3rem">Millennium BIM</strong><br />
+            <span style="font-size: 1.2rem">000000010000458397</span><br />
+            <em style="color: var(--cinza-medio)"
+              >(Titular: Laura Isabel Correia)</em
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modalPresentesMateriais" class="modal-presente-elegante">
+      <span
+        class="fechar-modal-presente-elegante"
+        onclick="fecharModalPresente('modalPresentesMateriais')"
+        >&times;</span
+      >
+      <h3>Presentes Materiais</h3>
+      <p style="font-size: 1.3rem; color: var(--cinza-medio)">
+        Disponibilizamos uma lista especial de presentes na loja Casa das
+        Loiças.
+      </p>
+
+      <div
+        style="
+          margin-top: 35px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        "
+      >
+        <a
+          href="tel:+25821303332"
+          class="btn-mapa-elegante"
+          style="
+            text-decoration: none;
+            text-align: center;
+            justify-content: center;
+          "
+        >
+          <i class="fas fa-phone"></i> Ligar: +258 21303332
+        </a>
+
+        <button
+          class="btn-mapa-elegante"
+          onclick="window.open('https://maps.app.goo.gl/vZUBzcfwrXbFhh1H7', '_blank')"
+          style="justify-content: center"
+        >
+          <i class="fas fa-map-marker-alt"></i> Ver no mapa
+        </button>
+      </div>
+    </div>
+
+    <!-- POPUP MENSAGEM ENVIADA -->
+    <div id="popupMensagem" class="popup-mensagem-elegante">
+      <h3>Mensagem Enviada!</h3>
+      <p
+        style="
+          font-size: 1.3rem;
+          color: var(--cinza-medio);
+          margin-bottom: 30px;
+        "
+      >
+        Sua mensagem foi enviada com sucesso. Muito obrigado!
+      </p>
+      <button
+        class="btn-enviar-elegante"
+        onclick="fecharPopupMensagem()"
+        style="margin-top: 10px"
+      >
+        Fechar
+      </button>
+    </div>
+
+    <!-- OVERLAY PARA MODAIS -->
+    <div
+      id="overlay"
+      class="overlay-elegante"
+      onclick="fecharTodosModais()"
+    ></div>
+
+    <script>
+      // Elementos principais
+      const btnAbrirConvite = document.getElementById("btnAbrirConvite");
+      const conteudoPrincipal = document.getElementById("conteudoPrincipal");
+      const btnTocarMusica = document.getElementById("btnTocarMusica");
+      const musicaFundo = document.getElementById("musicaFundo");
+      const secaoCapa = document.getElementById("capa");
+      const secoes = document.querySelectorAll(".secao");
+      const textoDestaque = document.querySelector(".texto-destaque");
+      const noivo = document.querySelector(".noivo");
+      const noiva = document.querySelector(".noiva");
+      const coracaoCentral = document.querySelector(".coracao-central");
+      const eventosElegantes = document.querySelectorAll(".evento-elegante");
+      const contadorItems = document.querySelectorAll(
+        ".contador-item-elegante"
+      );
+      const galeriaItems = document.querySelectorAll(".galeria-item-elegante");
+
+      // Botão para abrir o convite
+      btnAbrirConvite.addEventListener("click", function () {
+        // Esconder a capa com animação
+        secaoCapa.style.opacity = "0";
+        secaoCapa.style.transform = "translateY(-20px)";
+        secaoCapa.style.pointerEvents = "none";
+
+        setTimeout(() => {
+          secaoCapa.style.display = "none";
+        }, 800);
+
+        // Mostrar conteúdo principal com animação
+        setTimeout(() => {
+          conteudoPrincipal.classList.remove("oculto");
+          conteudoPrincipal.style.opacity = "0";
+          conteudoPrincipal.style.transform = "translateY(20px)";
+
+          // Animar entrada do conteúdo principal
+          setTimeout(() => {
+            conteudoPrincipal.style.transition =
+              "opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1)";
+            conteudoPrincipal.style.opacity = "1";
+            conteudoPrincipal.style.transform = "translateY(0)";
+          }, 100);
+        }, 500);
+
+        // Tocar música automaticamente
+        setTimeout(() => {
+          tocarMusica();
+        }, 1000);
+
+        // Rolar suavemente para o topo do conteúdo
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }, 300);
+      });
+
+      // Música de fundo
+      function tocarMusica() {
+        musicaFundo.volume = 0.25;
+        const playPromise = musicaFundo.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              // Autoplay funcionou
+              btnTocarMusica.style.display = "none";
+            })
+            .catch(() => {
+              // Autoplay bloqueado, mostrar botão
+              btnTocarMusica.style.display = "block";
+              setTimeout(() => {
+                btnTocarMusica.classList.add("visivel");
+              }, 300);
+            });
+        }
+      }
+
+      btnTocarMusica.addEventListener("click", function () {
+        musicaFundo.play();
+        btnTocarMusica.style.opacity = "0";
+        btnTocarMusica.style.transform = "scale(0.9)";
+
+        setTimeout(() => {
+          btnTocarMusica.style.display = "none";
+        }, 400);
+      });
+
+      // Animação de aparecimento das seções ao fazer scroll
+      function verificarSecoesVisiveis() {
+        const alturaJanela = window.innerHeight;
+        const triggerPoint = alturaJanela * 0.8;
+
+        // Animar seções principais
+        secoes.forEach((secao) => {
+          const topoSecao = secao.getBoundingClientRect().top;
+
+          if (topoSecao < triggerPoint) {
+            secao.classList.add("visivel");
+
+            // Animar texto destaque
+            if (secao.id === "texto-romantico" && textoDestaque) {
+              setTimeout(() => {
+                textoDestaque.classList.add("visivel");
+              }, 300);
+            }
+
+            // Animar noivos e coração
+            if (secao.id === "os-noivos") {
+              setTimeout(() => {
+                if (noivo) noivo.classList.add("visivel");
+              }, 200);
+
+              setTimeout(() => {
+                if (coracaoCentral) coracaoCentral.classList.add("visivel");
+              }, 600);
+
+              setTimeout(() => {
+                if (noiva) noiva.classList.add("visivel");
+              }, 1000);
+            }
+
+            // Animar eventos da agenda
+            if (secao.id === "agenda") {
+              eventosElegantes.forEach((evento, index) => {
+                setTimeout(() => {
+                  evento.classList.add("visivel");
+                }, index * 300);
+              });
+            }
+
+            // Animar contador
+            if (secao.id === "contador") {
+              contadorItems.forEach((item, index) => {
+                setTimeout(() => {
+                  item.classList.add("visivel");
+                }, index * 200);
+              });
+            }
+
+            // Animar galeria
+            if (secao.id === "galeria") {
+              galeriaItems.forEach((item, index) => {
+                setTimeout(() => {
+                  item.classList.add("visivel");
+                }, index * 150);
+              });
+            }
+          }
+        });
+      }
+
+      // Contador regressivo
+      function atualizarContador() {
+        const dataCasamento = new Date("September 27, 2026 10:00:00").getTime();
+        const agora = new Date().getTime();
+        const diferenca = dataCasamento - agora;
+
+        if (diferenca < 0) {
+          document.getElementById("dias").textContent = "00";
+          document.getElementById("horas").textContent = "00";
+          document.getElementById("minutos").textContent = "00";
+          document.getElementById("segundos").textContent = "00";
+          return;
+        }
+
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        const horas = Math.floor(
+          (diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutos = Math.floor(
+          (diferenca % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+        // Animar números que mudam
+        const atualizarComAnimacao = (elemento, novoValor) => {
+          const valorAtual = parseInt(elemento.textContent);
+          if (valorAtual !== novoValor) {
+            elemento.style.transform = "scale(1.2)";
+            elemento.style.color = "var(--dourado)";
+
+            setTimeout(() => {
+              elemento.textContent = novoValor.toString().padStart(2, "0");
+              elemento.style.transform = "scale(1)";
+
+              setTimeout(() => {
+                elemento.style.color = "";
+              }, 300);
+            }, 200);
+          } else {
+            elemento.textContent = novoValor.toString().padStart(2, "0");
+          }
+        };
+
+        atualizarComAnimacao(document.getElementById("dias"), dias);
+        atualizarComAnimacao(document.getElementById("horas"), horas);
+        atualizarComAnimacao(document.getElementById("minutos"), minutos);
+        atualizarComAnimacao(document.getElementById("segundos"), segundos);
+      }
+
+      // Galeria de fotos
+      const imagensGaleria = [
+        "LauraeJosee3.jpg",
+        "Joseelaura1.jpg",
+        "Foto5.jpg",
+        "Foto1.jpg",
+        "CapJELjpg.jpg",
+      ];
+
+      function abrirModal(indice) {
+        const modal = document.getElementById("modalGaleria");
+        const imagemModal = document.getElementById("imagemModal");
+        const overlay = document.getElementById("overlay");
+
+        imagemModal.src = imagensGaleria[indice];
+
+        // Mostrar overlay primeiro
+        overlay.classList.add("ativo");
+
+        // Depois mostrar modal
+        setTimeout(() => {
+          modal.classList.add("ativo");
+        }, 50);
+      }
+
+      function fecharModal() {
+        const modal = document.getElementById("modalGaleria");
+        const overlay = document.getElementById("overlay");
+
+        modal.classList.remove("ativo");
+
+        setTimeout(() => {
+          overlay.classList.remove("ativo");
+        }, 500);
+      }
+
+      // Modais de presentes
+      document
+        .getElementById("btnPresenteMonetario")
+        .addEventListener("click", function () {
+          abrirModalPresente("modalPresenteMonetario");
+        });
+
+      document
+        .getElementById("btnPresentesMateriais")
+        .addEventListener("click", function () {
+          abrirModalPresente("modalPresentesMateriais");
+        });
+
+      function abrirModalPresente(idModal) {
+        const modal = document.getElementById(idModal);
+        const overlay = document.getElementById("overlay");
+
+        overlay.classList.add("ativo");
+
+        setTimeout(() => {
+          modal.classList.add("ativo");
+        }, 50);
+      }
+
+      function fecharModalPresente(idModal) {
+        const modal = document.getElementById(idModal);
+        const overlay = document.getElementById("overlay");
+
+        modal.classList.remove("ativo");
+
+        setTimeout(() => {
+          overlay.classList.remove("ativo");
+        }, 300);
+      }
+
+      function fecharTodosModais() {
+        // Fechar todos os modais
+        document
+          .querySelectorAll(
+            ".modal-elegante.ativo, .modal-presente-elegante.ativo, .popup-mensagem-elegante.ativo"
+          )
+          .forEach((modal) => {
+            modal.classList.remove("ativo");
+          });
+
+        // Fechar overlay
+        document.getElementById("overlay").classList.remove("ativo");
+      }
+
+      // Envio de mensagens
+      document
+        .getElementById("enviarMensagem")
+        .addEventListener("click", function () {
+          const textoMensagem = document.getElementById("textoMensagem").value;
+
+          if (textoMensagem.trim() === "") {
+            alert("Por favor, escreva uma mensagem antes de enviar.");
+            return;
+          }
+
+          // Aqui normalmente enviaria para um servidor
+          // Por enquanto, apenas mostra o popup
+          document.getElementById("textoMensagem").value = "";
+
+          const popup = document.getElementById("popupMensagem");
+          const overlay = document.getElementById("overlay");
+
+          overlay.classList.add("ativo");
+
+          setTimeout(() => {
+            popup.classList.add("ativo");
+          }, 50);
+        });
+
+      function fecharPopupMensagem() {
+        const popup = document.getElementById("popupMensagem");
+        const overlay = document.getElementById("overlay");
+
+        popup.classList.remove("ativo");
+
+        setTimeout(() => {
+          overlay.classList.remove("ativo");
+        }, 300);
+      }
+
+      // Efeito de parallax suave
+      function parallaxEfeito() {
+        const scrolled = window.pageYOffset;
+        const capa = document.getElementById("capa");
+
+        if (capa && capa.style.display !== "none") {
+          capa.style.backgroundPositionY = scrolled * 0.5 + "px";
+        }
+      }
+
+      // Inicialização
+      window.addEventListener("scroll", function () {
+        verificarSecoesVisiveis();
+        parallaxEfeito();
+      });
+
+      window.addEventListener("load", function () {
+        // Verificar seções visíveis ao carregar
+        verificarSecoesVisiveis();
+
+        // Iniciar contador
+        atualizarContador();
+        setInterval(atualizarContador, 1000);
+
+        // Pré-carregar imagens para melhor performance
+        const imagensPrecarregar = [
+          "Capa.jpg",
+          "LauraeJosee3.jpg",
+          "Foto1.jpg",
+          "Foto5.jpg",
+          "CapJELjpg.jpg",
+          "Jose.jpg",
+          "Lauraa.jpg",
+          "logoo.jpeg",
+        ];
+
+        imagensPrecarregar.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
+
+        // Adicionar classe visível à capa (já visível)
+        secaoCapa.classList.add("visivel");
+      });
+
+      // Efeito de digitação no texto romântico (opcional)
+      function efeitoDigitacao() {
+        const texto = document.querySelector(".texto-destaque");
+        if (!texto) return;
+
+        const textoOriginal = texto.textContent;
+        texto.textContent = "";
+
+        let i = 0;
+        const velocidade = 80; // ms por caractere
+
+        function digitar() {
+          if (i < textoOriginal.length) {
+            texto.textContent += textoOriginal.charAt(i);
+            i++;
+            setTimeout(digitar, velocidade);
+          }
+        }
+
+        // Só iniciar quando a seção estiver visível
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(digitar, 500);
+              observer.unobserve(entry.target);
+            }
+          });
+        });
+
+        observer.observe(texto);
+      }
+
+      // Iniciar efeito de digitação quando a página carregar
+      setTimeout(efeitoDigitacao, 1000);
+    </script>
+  </body>
+</html>
