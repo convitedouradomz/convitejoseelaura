@@ -1278,7 +1278,7 @@
       .galeria-item-elegante.visivel {
         opacity: 1;
         transform: translateY(0) scale(1);
-        transition-delay: calc(var(--item-index, 0) * 0.1s);
+        transition-delay: calc(var(--item-index, 0) * 0.3s);
       }
 
       .galeria-item-elegante:hover {
@@ -3140,7 +3140,7 @@
             galeriaItems.forEach((item, index) => {
               setTimeout(() => {
                 item.classList.add("visivel");
-              }, index * 150);
+              }, index * 400);
             });
           }
         }
@@ -3195,3 +3195,4 @@
     </script>
   </body>
 </html>
+
