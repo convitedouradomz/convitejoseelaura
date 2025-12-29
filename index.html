@@ -52,7 +52,7 @@
       }
 
       .oculto {
-        display: none;
+        display: none !important;
       }
 
       .secao {
@@ -169,10 +169,15 @@
         align-items: center;
         text-align: center;
         padding: 20px;
-        opacity: 1;
-        transform: none;
         position: relative;
         overflow: hidden;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: opacity 0.8s ease !important;
+      }
+
+      #capa.oculto {
+        display: none !important;
       }
 
       #capa::before {
@@ -586,6 +591,7 @@
         opacity: 0;
         transform: translateY(30px);
         transition: opacity 1s ease, transform 1s ease;
+        transition-delay: 0.3s; /* ADICIONA ESTA LINHA */
       }
 
       @media (max-width: 768px) {
@@ -782,36 +788,46 @@
         }
       }
 
-      .noivo,
+      .noivo {
+        flex: 1;
+        min-width: 250px;
+        max-width: 320px;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(-100px) translateY(20px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
       .noiva {
         flex: 1;
         min-width: 250px;
         max-width: 320px;
         text-align: center;
         opacity: 0;
-        transform: translateX(-40px);
+        transform: translateX(100px) translateY(20px);
         transition: opacity 1s ease, transform 1s ease;
       }
 
-      .noiva {
-        transform: translateX(40px);
+      .noivo.visivel {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
       }
 
-      .noivo.visivel,
       .noiva.visivel {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateX(0) translateY(0);
       }
 
       @media (max-width: 768px) {
         .noivo,
         .noiva {
           min-width: 100%;
-          transform: translateY(30px);
+          transform: translateX(0) translateY(50px);
         }
 
-        .noiva {
-          transform: translateY(30px);
+        .noivo.visivel,
+        .noiva.visivel {
+          transform: translateX(0) translateY(0);
         }
       }
 
@@ -872,16 +888,16 @@
         margin: 0 20px;
         font-size: 3.5rem;
         color: var(--dourado);
-        animation: pulsar 1.5s infinite ease-in-out;
         opacity: 0;
-        transform: scale(0.8);
+        transform: scale(0.5);
         transition: opacity 1s ease, transform 1s ease;
+        transition-delay: 0.5s;
       }
 
       @media (max-width: 768px) {
         .coracao-central {
           margin: 20px 0;
-          transform: rotate(90deg);
+          transform: rotate(90deg) scale(0.5);
           font-size: 3rem;
         }
       }
@@ -889,6 +905,13 @@
       .coracao-central.visivel {
         opacity: 1;
         transform: scale(1);
+        animation: pulsar 1.5s infinite ease-in-out;
+      }
+
+      @media (max-width: 768px) {
+        .coracao-central.visivel {
+          transform: rotate(90deg) scale(1);
+        }
       }
 
       @keyframes pulsar {
@@ -1929,51 +1952,6 @@
         z-index: 1;
         line-height: 1.5;
       }
-      /* ANIMAÇÕES ESPECIAIS PARA OS NOIVOS */
-      @keyframes entrarDaEsquerda {
-        0% {
-          opacity: 0;
-          transform: translateX(-80px) scale(0.9);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0) scale(1);
-        }
-      }
-
-      @keyframes entrarDaDireita {
-        0% {
-          opacity: 0;
-          transform: translateX(80px) scale(0.9);
-        }
-        100% {
-          opacity: 1;
-          transform: translateX(0) scale(1);
-        }
-      }
-
-      .noivo.visivel {
-        animation: entrarDaEsquerda 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-      }
-
-      .noiva.visivel {
-        animation: entrarDaDireita 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-      }
-
-      .coracao-central.visivel {
-        animation: pulsar 1.5s infinite ease-in-out, aparecer 0.8s ease forwards;
-      }
-
-      @keyframes aparecer {
-        0% {
-          opacity: 0;
-          transform: scale(0.5);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
     </style>
   </head>
   <body>
@@ -2630,7 +2608,6 @@
 
     <script>
       // Elementos principais
-
       const btnAbrirConvite = document.getElementById("btnAbrirConvite");
       const conteudoPrincipal = document.getElementById("conteudoPrincipal");
       const btnTocarMusica = document.getElementById("btnTocarMusica");
@@ -2716,13 +2693,13 @@
           mensagemCard.style.animationDelay = `${index * 0.2}s`;
 
           mensagemCard.innerHTML = `
-                    <div class="mensagem-header">
-                        <div class="mensagem-autor">${mensagem.nome}</div>
-                        <div class="mensagem-relacao">${mensagem.relacao}</div>
-                    </div>
-                    <div class="mensagem-texto">"${mensagem.texto}"</div>
-                    <div class="mensagem-data">${mensagem.data}</div>
-                `;
+                <div class="mensagem-header">
+                    <div class="mensagem-autor">${mensagem.nome}</div>
+                    <div class="mensagem-relacao">${mensagem.relacao}</div>
+                </div>
+                <div class="mensagem-texto">"${mensagem.texto}"</div>
+                <div class="mensagem-data">${mensagem.data}</div>
+            `;
 
           ultimasMensagensContainer.appendChild(mensagemCard);
         });
@@ -2757,13 +2734,13 @@
           mensagemCard.style.animationDelay = `${index * 0.2}s`;
 
           mensagemCard.innerHTML = `
-                    <div class="mensagem-header">
-                        <div class="mensagem-autor">${mensagem.nome}</div>
-                        <div class="mensagem-relacao">${mensagem.relacao}</div>
-                    </div>
-                    <div class="mensagem-texto">"${mensagem.texto}"</div>
-                    <div class="mensagem-data">${mensagem.data}</div>
-                `;
+                <div class="mensagem-header">
+                    <div class="mensagem-autor">${mensagem.nome}</div>
+                    <div class="mensagem-relacao">${mensagem.relacao}</div>
+                </div>
+                <div class="mensagem-texto">"${mensagem.texto}"</div>
+                <div class="mensagem-data">${mensagem.data}</div>
+            `;
 
           mensagensContainer.appendChild(mensagemCard);
         });
@@ -2816,33 +2793,32 @@
         }, 50);
       });
 
-      // Botão para abrir o convite
+      // Botão para abrir o convite - CORRIGIDO
       btnAbrirConvite.addEventListener("click", function () {
+        // Fazer fade out da capa
         secaoCapa.style.opacity = "0";
-        secaoCapa.style.transform = "translateY(-20px)";
-        secaoCapa.style.pointerEvents = "none";
+        secaoCapa.style.transition = "opacity 0.8s ease";
+
+        // Mostrar conteúdo principal imediatamente
+        conteudoPrincipal.classList.remove("oculto");
+        conteudoPrincipal.style.opacity = "0";
+        conteudoPrincipal.style.transition = "opacity 0.8s ease";
 
         setTimeout(() => {
-          secaoCapa.style.display = "none";
+          conteudoPrincipal.style.opacity = "1";
+        }, 100);
+
+        // Esconder a capa completamente após o fade
+        setTimeout(() => {
+          secaoCapa.classList.add("oculto");
         }, 800);
 
-        setTimeout(() => {
-          conteudoPrincipal.classList.remove("oculto");
-          conteudoPrincipal.style.opacity = "0";
-          conteudoPrincipal.style.transform = "translateY(20px)";
-
-          setTimeout(() => {
-            conteudoPrincipal.style.transition =
-              "opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1)";
-            conteudoPrincipal.style.opacity = "1";
-            conteudoPrincipal.style.transform = "translateY(0)";
-          }, 100);
-        }, 500);
-
+        // Tocar música
         setTimeout(() => {
           tocarMusica();
-        }, 1000);
+        }, 500);
 
+        // Scroll suave para o topo
         setTimeout(() => {
           window.scrollTo({
             top: 0,
@@ -2894,31 +2870,42 @@
             if (secao.id === "texto-romantico" && textoDestaque) {
               setTimeout(() => {
                 textoDestaque.classList.add("visivel");
-              }, 300);
-            }
-
-            // Animação para os noivos - primeiro noivo, depois noiva
-            if (secao.id === "os-noivos") {
-              setTimeout(() => {
-                if (noivo) noivo.classList.add("visivel");
-                noivo.style.transition =
-                  "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
-              }, 800);
-
-              setTimeout(() => {
-                if (coracaoCentral) coracaoCentral.classList.add("visivel");
-                coracaoCentral.style.animation =
-                  "pulsar 1.2s infinite ease-in-out";
-              }, 1200);
-
-              setTimeout(() => {
-                if (noiva) noiva.classList.add("visivel");
-                noiva.style.transition =
-                  "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
-              }, 7000);
+              }, 100);
             }
           }
         });
+      }
+
+      // ANIMAÇÃO ESPECÍFICA PARA OS NOIVOS - CORRIGIDA
+      function animarNoivosAoScroll() {
+        const secaoNoivos = document.getElementById("os-noivos");
+        if (!secaoNoivos) return;
+
+        const alturaJanela = window.innerHeight;
+        const topoSecao = secaoNoivos.getBoundingClientRect().top;
+        const alturaSecao = secaoNoivos.offsetHeight;
+
+        // Verificar se a seção está visível
+        if (topoSecao < alturaJanela * 0.8) {
+          // Primeiro: aparecer o noivo
+          if (noivo && !noivo.classList.contains("visivel")) {
+            noivo.classList.add("visivel");
+
+            // Segundo: após 1 segundo, aparecer o coração
+            setTimeout(() => {
+              if (coracaoCentral) {
+                coracaoCentral.classList.add("visivel");
+              }
+            }, 1000);
+
+            // Terceiro: após 2 segundos do coração, aparecer a noiva
+            setTimeout(() => {
+              if (noiva && !noiva.classList.contains("visivel")) {
+                noiva.classList.add("visivel");
+              }
+            }, 3000);
+          }
+        }
       }
 
       // ANIMAÇÃO ESPECÍFICA PARA AGENDA
@@ -3079,41 +3066,11 @@
         const scrolled = window.pageYOffset;
         const capa = document.getElementById("capa");
 
-        if (capa && capa.style.display !== "none") {
+        if (capa && !capa.classList.contains("oculto")) {
           capa.style.backgroundPositionY = scrolled * 0.5 + "px";
         }
       }
 
-      // Efeito de digitação no texto romântico
-      function efeitoDigitacao() {
-        const texto = document.querySelector(".texto-destaque");
-        if (!texto) return;
-
-        const textoOriginal = texto.textContent;
-        texto.textContent = "";
-
-        let i = 0;
-        const velocidade = 30;
-
-        function digitar() {
-          if (i < textoOriginal.length) {
-            texto.textContent += textoOriginal.charAt(i);
-            i++;
-            setTimeout(digitar, velocidade);
-          }
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setTimeout(digitar, 200);
-              observer.unobserve(entry.target);
-            }
-          });
-        });
-
-        observer.observe(texto);
-      }
       // Efeito de digitação no texto romântico
       function efeitoDigitacao() {
         const texto = document.querySelector(".texto-destaque");
@@ -3136,7 +3093,7 @@
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              setTimeout(digitar, 500);
+              setTimeout(digitar, 0);
               observer.unobserve(entry.target);
             }
           });
@@ -3144,8 +3101,6 @@
 
         observer.observe(texto);
       }
-
-      // <-- AQUI É ONDE VOCÊ COLA O CÓDIGO NOVO! -->
 
       // ANIMAÇÃO PARA CONTADOR
       function animarContadorAoScroll() {
@@ -3190,15 +3145,17 @@
           }
         }
       }
-      // <-- E DEPOIS CONTINUA COM O window.addEventListener -->
+
       // Inicialização
       window.addEventListener("scroll", function () {
         verificarSecoesVisiveis();
         parallaxEfeito();
         animarAgendaAoScroll();
-        animarContadorAoScroll(); // <-- ADICIONE ESTA LINHA
-        animarGaleriaAoScroll(); // <-- ADICIONE ESTA LINHA
+        animarContadorAoScroll();
+        animarGaleriaAoScroll();
+        animarNoivosAoScroll(); // Adicionada para animar os noivos
       });
+
       window.addEventListener("load", function () {
         verificarSecoesVisiveis();
         atualizarContador();
@@ -3238,4 +3195,3 @@
     </script>
   </body>
 </html>
-
